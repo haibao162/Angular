@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="angular.min.js"></script>
+</head>
+<body ng-app="haibao">
+<div ng-controller="main">
+{{name}}<br>
+{{age}}<br>
+{{salary}}<br>
+{{k}}
+</div>
+</body>
+<script type="text/javascript">
+var app=angular.module('haibao',[]);
+app.service('myService',function(){
+	var name="jiaxin";
+	this.getName=function(){return name;};
+});
+app.factory('myFactory',function(){
+    var service={};
+    var age=24;
+    var salary=11000;
+    service.getAge=function(){
+    	return age;
+    };
+    service.getSalary=function(){
+    	return salary;
+    }
+    return service;
+
+ });
+
+app.factory('Factory2',function(){
+var i='haibao';
+var j=162;
+function getI(){
+	return i;
+};
+function getJ(){
+	return j;
+}
+
+
+return {  getI:getI,
+	      getJ:getJ }
+});
+
+app.controller('main',function($scope,myService,myFactory,Factory2){
+	//$scope.view=myService.name;  //invalid
+	$scope.name=myService.getName();
+	$scope.age=myFactory.getAge(); 
+	$scope.salary=myFactory.getSalary();
+	$scope.k=Factory2.getI()+","+Factory2.getJ();
+});
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../js/angular.min.js"></script>
+	
+	<style type="text/css">
+	body{
+		font-family:"Microsoft YaHei";
+		font-weight:bold;
+		}</style>
+</head>
+<body ng-app="app">
+master:<br>
+<div ng-controller="master">
+{{name}}<br>
+{{value}}<br>
+{{number}}
+</div><br>
+branch:<br>
+<div ng-controller="branch">
+{{age}}<br>
+{{none+name}}<br>
+{{value}}
+</div><br>
+branch2:<br>
+<div ng-controller="branch2">{{value}}<br>
+{{ser}}<br>
+{{myValue}}
+</div>
+<div ng-controller="branch3 as vmds">{{third}}<br>
+{{vmds.message}}
+</div>
+</body>
+<script type="text/javascript">
+var app = angular.module("app",[]);// ==angular.module("app");
+// var injector = angular.injector();
+// console.log(injector);
+// console.log(injector.has("$provide"));//false
+// console.log(injector.has("$injector"));//true
+app.service('myService',function(){
+this.my = 0;
+this.myfunction=function(x){
+	return 5*x*x+2*x+1;
+};
+});
+app.service('herService',function(){
+this.her = 1;
+});
+var injector=angular.injector(['app']);
+// 加载了2个模块中的服务
+//var injector = angular.injector(["myModule","herModule"]);
+console.log(injector.get('myService').my+"&&"+injector.get('herService').her);
+
+
+app.controller('master',['$scope','$rootScope',function($scope,$rootScope){
+	$scope.name = "haibao";
+	$rootScope.value = "162";
+}]);
+
+app.controller('branch',function(myService,$scope,$rootScope){
+	$scope.age = 24;
+	$rootScope.ser = myService.my;
+	$rootScope.number = 123456;
+});
+app.controller('branch2',branch2);
+function branch2(myService,$scope,$rootScope){
+//branch2.$inject['myService','$scope','rootScope'];
+$scope.myValue = "I am branch2";
+}
+</script>
+<script type="text/javascript" src="rootscope.js"></script>
+</html>

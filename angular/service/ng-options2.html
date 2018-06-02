@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div>
+<select ng-init="x=names[0]" ng-model="x" ng-options="x for x in names">
+</select><!--ng-model="selectedName"-->
+<select ng-model="sel" ng-init="sel=names[0]">
+<option ng-repeat="x in names">{{x}}</option>
+</select>
+<h2>{{sel}}</h2>
+<select ng-model="selectSite" ng-options="x.name for x in sites">
+</select>
+<h1>{{selectSite.age}}</h1>
+<p>{{selectSite.salary}}</p>
+</div>
+</body>
+<script type="text/javascript">
+angular.module('myApp',[]).controller('myCtrl',function($scope){
+$scope.names=['first','second','third'];
+$scope.sites=[{name:'haibao',age:222,salary:5500},{name:'162',age:33,salary:11000},
+{name:'tt',age:24,salary:2000}];
+});
+</script>
+</html>

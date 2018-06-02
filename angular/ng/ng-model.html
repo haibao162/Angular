@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	
+	
+</head>
+<body ng-app="myApp" style="font-family:Microsoft YaHei;font-weight: bold;">
+<div  ng-controller="footer">
+<p>name:<input type="text"  ng-model="myname" value="test"></p>
+<h1>Hello {{myname}}</h1>
+<p>name:<input type="text" ng-model="name"></p>
+<h1> {{name}}</h1>
+<h2>firstname: {{a}}</h2>
+
+<select ng-model="job.bench">
+<option>user</option>
+<option>name</option></select>
+{{job.bench}}
+</div>
+
+</body>
+<script type="text/javascript">
+var app=angular.module('myApp',[]);
+app.controller('footer',function($scope){
+
+	setInterval(function(){
+		console.log($scope.myname);
+		console.log($scope.job.bench);
+		console.log($scope.job);
+	},1000);
+});
+</script>
+</html>

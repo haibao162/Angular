@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="mine">
+<input type="radio" ng-checked="false">
+<input type="radio" ng-checked="choo" ng-model="chs" ng-click="ch()">
+{{count}}<br>
+<input type="checkbox" name="" ng-checked="false">
+<input type="radio" name="" ng-checked="flat" ng-click="updateFlat()">
+</div>
+</body>
+<script type="text/javascript">
+angular.module('myApp',[]).controller('mine',function($scope){
+$scope.choo=false;
+$scope.count=0;
+$scope.ch=function(){console.log("test ng click");
+$scope.count++;
+	if($scope.count==11){
+		$scope.count=0;
+	}
+};
+
+$scope.flat=false;
+$scope.updateFlat=function(){
+if($scope.flat==false){
+	$scope.flat=true;
+}
+else if($scope.flat==true){ $scope.flat=false;
+}
+};
+});
+</script>
+</html>

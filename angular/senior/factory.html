@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app = "App">
+<head>
+	<title></title>
+	<script src="../js/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller = "control"></div>
+
+</body>
+<script>
+var app = angular.module('App',[]);
+app.config();
+app.factory('factor',Factory);
+function Factory(){
+
+	var getName = function(){
+		return 'getName';
+		};
+
+return {
+        getName : getName
+	};
+}
+
+app.controller('control',Controller);
+Controller.$inject = ['factor','$scope'];
+function Controller(factor,$scope){
+console.log('factory:'+factor.getName());
+}
+</script>
+</html>

@@ -1,0 +1,40 @@
+{
+  "name": "jq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "async": "^2.5.0",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "busboy": "^0.2.14",
+    "express": "^4.15.3",
+    "fs-extra": "^3.0.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-filerev": "^2.3.1",
+    "grunt-lesslint": "^4.0.0",
+    "grunt-usemin": "^3.1.1",
+    "jquery": "^3.2.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "load-grunt-tasks": "^3.5.2",
+    "mysql": "^2.13.0",
+    "q": "^1.5.0"
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../js/css/bootstrap.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"> -->
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+wechat:<input type="text" ng-model="wechat"><br>
+QQ:<input type="text" ng-model="qq">
+{{wechat+",,,"+qq}}<br>
+{{date || "not know"}}
+</div>
+<div ng-controller="test">
+tt:<input type="text" ng-model="tt">
+{{tt}}
+</div>
+<runoob-directive></runoob-directive>
+<div ng-controller="third">
+<input type="text" ng-model="click">
+<button ng-click='helloworld()'></button>
+<h1>{{greet}}</h1>
+</div>
+
+<div ng-controller="func">
+fun1:<input type="text" ng-model="fun1">
+fun2:<input type="text" ng-model="fun2">
+{{fun3()}}
+</div>
+
+<div ng-controller="external">
+外部文件：<input type="text" ng-model="ext">
+{{ext}}
+</div>
+
+<div ng-controller="myfilter">
+{{ msg | reverse}}</div>
+</body>
+<script type="text/javascript">
+var app=angular.module('myApp',[]);
+app.controller('myCtrl',function($scope){
+$scope.wechat="haibao";
+$scope.qq="12433333";
+}).controller('test',function($scope){  //define another angular appliaction
+$scope.tt="two controller";
+}).directive("runoobDirective",function(){
+return {template:"<h1>define personnal command</h1>"};
+}).controller('third',function($scope){
+$scope.helloworld=function(){
+	$scope.greet=$scope.click;
+};
+}).controller('func',function($scope){
+	$scope.fun1="haibao";
+	$scope.fun2="162";
+$scope.fun3=function(){
+	return $scope.fun1+","+$scope.fun2;
+};
+})
+;
+</script>
+<script type="text/javascript" src="ng_controller.js"></script>
+</html>

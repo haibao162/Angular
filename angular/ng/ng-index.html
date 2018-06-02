@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	
+	
+</head>
+<body ng-app="myApp" style="font-family:Microsoft YaHei;font-weight: bold;">
+
+<div  ng-controller="index">
+
+<ul ng-repeat="ab in abs">
+<div class="container">
+<li style="float: left;">{{ab.progress}}</li>
+<li style="float: left;margin-left: 50px">{{ab.message}}</li>
+<div>
+</ul>
+<table class="table table-striped" ng-repeat="session in sessions" ng-init="outIndex=$index">
+<tr ng-repeat="campaign in session.campaigns">
+<td>{{outIndex}}</td>
+<td>{{$index}}</td>
+<td>{{campaign.progress}}</td>
+<td>{{campaign.message}}</td></tr>
+</table>
+</div>
+
+</body>
+<script type="text/javascript">
+var app=angular.module('myApp',[]);
+app.controller('index',function($scope){
+$scope.abs = [{progress:'20%',message:'message1'},{progress:'30%',message:'message2'},{progress:'40%',message:'message3'}];
+$scope.sessions = [{campaigns:[{progress:'11%',message:'10001 message1'},{progress:'12%',message:'10002 message1'}]},
+{campaigns:[{progress:'21%',message:'20001 message2'},{progress:'22%',message:'20002 message2'}]},
+{campaigns:[{progress:'31%',message:'30001 message3'},{progress:'32%',message:'30002 message3'}]},
+{campaigns:[{progress:'41%',message:'40001 message4'},{progress:'42%',message:'40002 message4'}]}
+];
+});
+</script>
+</html>

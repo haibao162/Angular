@@ -1,0 +1,19 @@
+create table product  
+(  
+product_id int not null,  
+name varchar(50) not null,  
+price double not null  
+);  
+insert into product values(1, 'apple ', 5.5);  
+create table purchase  
+(  
+id int not null,  
+product_id int not null,  
+qty int not null default 0,  
+gen_time datetime not null  
+);  
+insert into purchase values(1, 1, 10, now());  
+create view purchase_detail as select product.
+name as name, product .price as price, purchase.qty as qty, 
+product .price * purchase.qty as total_value from product, 
+purchase where product.product_id = purchase.product_id;  

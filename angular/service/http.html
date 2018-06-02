@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<script src="angular.min.js"></script>
+<script src="jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="appCtrl"> 
+<ul>
+<li ng-repeat="x in datas">{{x}}</li>
+</ul>
+<table class="table table-bordered">
+<tr ng-repeat="x in datas | orderBy : 'value'">
+<td>{{ $index + 1 }}</td>
+<td>{{x.device_name}}</td>
+<td>{{x.device_id}}</td>
+<td>{{x.parameter}}</td>
+<td>{{x.unit}}</td>
+<td>{{x.value}}</td>
+</table>
+</div>
+
+<script>
+var s1='{"name":"qw"}';
+console.log(JSON.parse(s1));
+// var s="a";
+// var s2="b";
+// var t=[];
+// t.push("name:ww");
+//console.log(t);
+// $.ajax({
+//      	 type: 'POST',
+//      	 url:"http:localhost:3000/List/getRaspberryList",
+//      	 async:false,
+//      	dataType:"json",
+//      	success:function(result){
+//        console.log(result);      
+//     }
+// });
+
+angular.module('myApp',[]).controller('appCtrl',function($scope,$http){
+$http({
+method:'POST',
+url:'http:localhost:3000/List/getRaspberryList',
+}).then(function success(response){
+	console.log(response.data[0].value);//list
+  var result=[];
+  
+  var str="";
+  var temp;
+  
+  for(var i=0;i<response.data.length;i++){
+     temp=JSON.stringify(response.data[i]);
+     //console.log(temp);  json
+     temp=temp.substring(1,temp.length-1).split(',');  //remove '{' and '}'
+     console.log("temp:"+temp);
+     for(var j=1;j<temp.length;j++){
+         str+=temp[j]+",";
+       
+     }
+   str="{"+str.substring(0,str.length-1)+"}";
+   //console.log(str);
+   //console.log(JSON.parse(str));
+   result.push(JSON.parse(str));
+    str="";
+  }
+console.log(result);
+$scope.datas=result;
+//$scope.datas=response.data;
+},function fail(response){
+	console.log('error');
+});
+});
+</script>
+
+</body>
+</html>
+
+<!--table:http://v2.bootcss.com/base-css.html#tables
+promise:https://www.baidu.com/home/news/data/newspage?nid=3470510993985811409&n_type=0&p_from=1-->

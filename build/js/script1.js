@@ -1,0 +1,1 @@
+var express=require("express"),app=express(),array1=[2323,33,22];array2=[];for(var i=0;i<array1.length;i++)array2.push(array1[i]);console.log(array2),app.get("/",function(r,a){a.send("hello")}),app.listen(6e3),module.exports=app;

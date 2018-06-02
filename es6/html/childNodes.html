@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul id = 'list'>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+</body>
+<script type="text/javascript">
+var obj = document.getElementById('list');
+var child = obj.children;
+var arr = [1,2,3,4];
+arr.forEach(function(arg1,arg2){
+	console.log(arg1);//value
+	console.log('2:' + arg2);//index
+	arr[arg2] = function(){
+		console.log(arg2);
+	};
+	child[arg2].onclick = function(){
+		alert(arg2);
+	}
+});
+</script>
+</html>

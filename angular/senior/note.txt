@@ -1,0 +1,41 @@
+angular.module('myModule', []).
+  value('a', 123).
+  factory('a', function() { return 123; }).
+  directive('directiveName', ...).
+  filter('filterName', ...);
+
+// is same as
+
+angular.module('myModule', []).
+  config(function($provide, $compileProvider, $filterProvider) {
+    $provide.value('a', 123)
+    $provide.factory('a', function() { return 123; })
+    $compileProvider.directive('directiveName', ...).
+    $filterProvider.register('filterName', ...);
+  });
+
+  config : http://www.angularjs.cn/A00x
+
+
+ https://yq.aliyun.com/ziliao/127673
+ <div ng-app="Demo" ng-controller="testCtrl as ctrl">
+ <textarea ng-model="ctrl.jsContext"></textarea>
+ <pre ng-bind="ctrl.jsBody"></pre>
+ <button ng-click="ctrl.runJs()">Run</button>
+ <div ng-bind-html="ctrl.htmlText" class="myCss"></div>
+ </div>
+ (function () {
+ angular.module('Demo', [])
+ .controller('testCtrl', ["$sce","$scope",testCtrl]);
+ function testCtrl($sce,$scope) {
+  var vm = this;
+  $scope.$watch("ctrl.jsContext",function(n){
+  vm.jsBody = n;
+  });
+  this.runJs = function() {
+  eval(vm.jsBody.toString());
+  };
+  vm.htmlText = "<h2>Hello World</h2>";
+  vm.htmlText =$sce.trustAsHtml(this.htmlText);
+ }
+ }());

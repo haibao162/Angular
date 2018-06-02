@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+wechat:<input type="text" ng-model="wechat"><br>
+QQ:<input type="text" ng-model="qq">
+{{wechat+",,,"+qq}}<br>
+{{date || "not know"}}
+</div>
+<div ng-controller="test">
+tt:<input type="text" ng-model="tt">
+{{tt}}
+</div>
+<runoob-directive></runoob-directive>
+<div ng-controller="third">
+<input type="text" ng-model="click">
+<button ng-click='helloworld()'></button>
+<h1>{{greet}}</h1>
+</div>
+<div ng-controller="for">
+<ul>
+<li ng-repeat="x in names">{{x}}</li>
+</ul>
+</div>
+</body>
+<script type="text/javascript">
+var app=angular.module('myApp',[]);
+app.controller('myCtrl',function($scope){
+$scope.wechat="haibao";
+$scope.qq="12433333";
+}).controller('test',function($scope){  //define another angular appliaction
+$scope.tt="two controller";
+}).directive("runoobDirective",function(){
+return {template:"<h1>define personnal command</h1>"};
+}).controller('third',function($scope){
+$scope.helloworld=function(){
+	$scope.greet=$scope.click;
+};
+});
+</script>
+</html>

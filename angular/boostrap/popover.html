@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="well"><a class="btn btn-info getMessage" href="#" data-trigger="hover">progress</a></div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".getMessage").popover({
+  	
+		placement:"right",
+		html:true,
+		content:'<div style="width:200px;height:50px">message</div>'
+	});
+});
+</script>
+</html>
+<!-- http://www.51xuediannao.com/bootstrap/bootstrap_popover.html -->

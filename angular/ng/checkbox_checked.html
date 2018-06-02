@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="../js/angular.min.js"></script>
+<script src="../js/jquery.min.js">
+</script>
+</head>
+<body ng-app="my">
+<div ng-controller="con as vmdj" class="hel">
+<input type="checkbox" ng-click="">
+<input type="radio" class='rad' ng-click="vmdj.getCheck()" checked="true">
+<div>
+</body>
+<script>
+app=angular.module('my',[]);
+app.controller('con',function($scope){
+	var vmdj = this;
+$('div').find('input[type=checkbox]').prop('checked',true);
+console.log($('.hel').find('input[type=checkbox]').prop('checked'));
+setTimeout(function(){
+$('.hel').find('input[type=checkbox]').prop('checked',false);
+console.log($('.hel').find('input[type=checkbox]').prop('checked'));
+},3000);
+var status = $('.rad').is(':checked');
+vmdj.getCheck = function(){
+	if(!status){
+		status = true;
+		return;
+	}else if(status){
+		$('.rad').prop('checked',false);
+		status =false;
+	}       
+}
+});
+</script>
+</html>

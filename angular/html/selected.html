@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+ <script type="text/javascript" src="../js/jquery.min.js"></script>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<select id="Province" onchange="getCity(this)" style="width: 150px;">
+<option value="请选择">-请选择-</option>
+<option>北京市</option>
+<option>上海市</option>
+<option>合肥市</option>
+</select>
+<select id="City" style="margin-left:30px;"><option>所在城市</option></select>
+<select id="town"><option>所在城镇</option></select>
+</body>
+<script type="text/javascript">
+console.log(document.getElementById('Province').options);
+function getCity(currentProvince){
+var currentProvince=currentProvince;
+var city=document.getElementById('City');
+var town=document.getElementById('town');
+var index=currentProvince.selectedIndex;
+console.log(index+":"+currentProvince.options[index].value);//index number
+if(index==0){
+	$("#City").empty();
+	city.options.add(new Option('所在城市'));
+	$("#town").empty();
+	town.options.add(new Option('所在城镇'));
+}
+if(index==1){
+$("#City").empty();
+city.options.add(new Option('闵行区'));
+$("#town").empty();
+town.options.add(new Option('七宝镇'));
+}
+}
+</script>
+</html>
